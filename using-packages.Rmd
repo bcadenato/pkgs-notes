@@ -1,0 +1,26 @@
+# Using other packages inside a package
+
+Using a different package inside a package is clearly explained in [R Packages Chapter 2](https://r-pkgs.org/whole-game.html#use_package). There are a few usual cases that are not completely clear from the book itself though (though the book refers the reader to certain resources to clarify these cases).
+
+## Using tidy evaluation inside a package
+
+The Tidyverse allows one to refer to variables inside a tibble as if they were variables in the environment itself. This however comes at a price, as `R CMD CHECK` gets confused by this behaviour. The way to solve this is described in the vignette [Programming with `dplyr`](https://dplyr.tidyverse.org/articles/programming.html).
+
+The solution in summary is:
+
+1. Add the package `rlang` to `DESCRIPTION` as an imported package. (This can be done with `usethis.:use_package()`.)
+1. Import the object `.data` from the package `rlang`. (This can be added with the help of Roxygen comments adding the `@importFrom` directive.
+1. Refer in the package to the variable `x` as `.data$x`. 
+
+## Using the pipe inside a package
+
+The pipe is a function inside the package `magrittr`, and as such it can be added. The steps to get this added are:
+
+1. Add the package `magrittr` to `DESCRIPTION` as an imported package (same as above).
+1. Import the function `%>%` from the package `magrittr` (same as above).
+
+The steps above would add the pipe to the function that is being used, and this would need to be done for every function that uses it. 
+
+There's a solution, as found in [this question](https://stackoverflow.com/questions/27947344/r-use-magrittr-pipe-operator-in-self-written-package/52231630#52231630) in StackOverflow, which allows to load the pipe in every function in the package, and even export it for the users of the package. The solution adds the Roxygen `@importFrom` directive to the package documentation. 
+
+This behaviour relies in the mechanics of package documentation, which is not clearly explained in the R Packages book. It is described in this [Workshop Documentation](https://combine-australia.github.io/r-pkg-dev/other-documentation.html#package-help-file). 

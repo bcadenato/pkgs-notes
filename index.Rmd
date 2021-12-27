@@ -1,0 +1,15 @@
+---
+title: "Notes about writing Packages in R"
+author: "Borja Cadenato"
+date: "12/26/2021"
+site: "bookdown::bookdown_site"
+documentclass: book
+output:
+  bookdown::gitbook: default
+---
+
+# Notes for writing packages in R {-}
+
+This book tries to collect some of the tips that I usually forget from time to time when I write a package. It's not intended to be comprehensive in any way, and it's only for my personal use. 
+
+At the same time, this is the first book I build using `bookdown`, and it's a test on its concepts, and a way of trying its ideas for practical use.

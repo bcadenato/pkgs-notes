@@ -1,0 +1,6 @@
+rmd_files: [
+  "index.Rmd",
+
+  "internal-data.Rmd",
+  "using-packages.Rmd",
+]

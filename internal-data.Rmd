@@ -1,0 +1,12 @@
+# Using internal data
+
+A usual need in packages is to make certain data available inside the package. The logic to make such data available is:
+
+1. Store the data in `sysdata.Rmd` using the function `usethis::use_data(x, internal = TRUE)`.
+1. Every function in the package will have access to this data.
+
+I believe that every call to the function `usethis::use_data` adds data to the file `sysdata.Rmd`. 
+
+The best guide to understanding this use is [R Packages Chapter 14](https://r-pkgs.org/data.html), though it's not fully clear on this point. I've also referred to [this question](https://stackoverflow.com/questions/40806043/automatic-loading-of-data-from-sysdata-rda-in-package) in StackOverflow. 
+
+
