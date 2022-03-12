@@ -3,4 +3,5 @@ rmd_files: [
 
   "internal-data.Rmd",
   "using-packages.Rmd",
+  "using-credentials.Rmd"
 ]
